@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#050510">
+
+<title>Atif Irfan Musa | Muta</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,"Noto Sans Bengali",sans-serif;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  min-height:100vh;
+  color:white;
+  background:
+    radial-gradient(circle at 10% 10%,rgba(0,234,255,.18),transparent 28%),
+    radial-gradient(circle at 90% 15%,rgba(255,0,204,.18),transparent 28%),
+    radial-gradient(circle at 50% 100%,rgba(100,0,255,.20),transparent 35%),
+    #03030b;
+  overflow-x:hidden;
+}
+
+/* Background glow */
+
+body::before,
+body::after{
+  content:"";
+  position:fixed;
+  width:350px;
+  height:350px;
+  border-radius:50%;
+  filter:blur(130px);
+  opacity:.16;
+  z-index:-5;
+  pointer-events:none;
+}
+
+body::before{
+  background:#00eaff;
+  left:-180px;
+  top:-150px;
+  animation:orb1 8s infinite alternate;
+}
+
+body::after{
+  background:#ff00cc;
+  right:-180px;
+  bottom:-150px;
+  animation:orb2 9s infinite alternate;
+}
+
+@keyframes orb1{
+  to{transform:translate(120px,100px)}
+}
+
+@keyframes orb2{
+  to{transform:translate(-100px,-80px)}
+}
+
+/* Floating particles */
+
+.particle{
+  position:fixed;
+  width:3px;
+  height:3px;
+  background:white;
+  border-radius:50%;
+  opacity:.55;
+  z-index:-1;
+  animation:float 5s infinite alternate ease-in-out;
+}
+
+@keyframes float{
+  to{
+    transform:translateY(-50px);
+    opacity:.15;
+  }
+}
+
+.container{
+  width:min(94%,900px);
+  margin:auto;
+  padding:20px 0 60px;
+}
+
+/* RGB BORDER */
+
+.rgb{
+  position:relative;
+  padding:2px;
+  border-radius:30px;
+  margin-bottom:22px;
+  overflow:hidden;
+}
+
+.rgb::before{
+  content:"";
+  position:absolute;
+  inset:-150%;
+  background:conic-gradient(
+    #00eaff,
+    #0066ff,
+    #7b00ff,
+    #ff00cc,
+    #ff0066,
+    #00ff99,
+    #00eaff
+  );
+  animation:spin 5s linear infinite;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+
+.card{
+  position:relative;
+  z-index:2;
+  background:rgba(5,5,15,.94);
+  backdrop-filter:blur(20px);
+  border-radius:28px;
+}
+
+/* HERO */
+
+.hero{
+  text-align:center;
+  padding:55px 20px 48px;
+}
+
+.hero-tag{
+  display:inline-block;
+  padding:9px 18px;
+  border:1px solid rgba(0,234,255,.45);
+  border-radius:30px;
+  color:#00eaff;
+  font-size:12px;
+  letter-spacing:2px;
+  box-shadow:0 0 25px rgba(0,234,255,.12);
+}
+
+.avatar{
+  width:165px;
+  height:165px;
+  padding:5px;
+  margin:28px auto 0;
+  border-radius:50%;
+  background:conic-gradient(
+    #00eaff,
+    #7b00ff,
+    #ff00cc,
+    #00ffcc,
+    #00eaff
+  );
+  animation:avatar 5s linear infinite;
+  box-shadow:
+    0 0 30px rgba(0,234,255,.4),
+    0 0 70px rgba(255,0,204,.2);
+}
+
+@keyframes avatar{
+  to{transform:rotate(360deg)}
+}
+
+.avatar-inner{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  background:#080811;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:54px;
+  font-weight:900;
+}
+
+.hero h1{
+  margin-top:28px;
+  font-size:clamp(34px,8vw,60px);
+  font-weight:900;
+  background:linear-gradient(90deg,#00eaff,#fff,#ff00cc);
+  -webkit-background-clip:text;
+  color:transparent;
+  animation:textGlow 2s infinite alternate;
+}
+
+@keyframes textGlow{
+  from{
+    filter:drop-shadow(0 0 3px #00eaff);
+  }
+  to{
+    filter:drop-shadow(0 0 18px #ff00cc);
+  }
+}
+
+.muta{
+  margin-top:12px;
+  color:#bbb;
+  font-size:18px;
+}
+
+.place{
+  margin-top:14px;
+  color:#00eaff;
+}
+
+.status{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top:24px;
+  padding:10px 18px;
+  border-radius:30px;
+  background:rgba(0,255,150,.06);
+  border:1px solid rgba(0,255,150,.25);
+  color:#00ff99;
+  font-size:12px;
+}
+
+.dot{
+  width:8px;
+  height:8px;
+  background:#00ff99;
+  border-radius:50%;
+  box-shadow:0 0 15px #00ff99;
+  animation:blink 1s infinite;
+}
+
+@keyframes blink{
+  50%{opacity:.25}
+}
+
+/* CLOCK */
+
+.clock-card{
+  text-align:center;
+  padding:35px 20px;
+}
+
+.small-title{
+  color:#777;
+  font-size:11px;
+  letter-spacing:3px;
+  margin-bottom:15px;
+}
+
+.clock{
+  font-size:clamp(42px,10vw,75px);
+  font-weight:900;
+  letter-spacing:4px;
+  background:linear-gradient(90deg,#00eaff,#fff,#ff00cc);
+  -webkit-background-clip:text;
+  color:transparent;
+  text-shadow:0 0 30px rgba(0,234,255,.3);
+}
+
+.date{
+  margin-top:12px;
+  color:#aaa;
+  font-size:15px;
+}
+
+/* SECTION */
+
+.section{
+  padding:32px 22px;
+}
+
+.title{
+  text-align:center;
+  margin-bottom:26px;
+  font-size:27px;
+  background:linear-gradient(90deg,#00eaff,#ff00cc);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+/* DETAILS */
+
+.details{
+  display:grid;
+  gap:14px;
+}
+
+.detail{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  padding:18px;
+  border-radius:20px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.08);
+  transition:.3s;
+}
+
+.detail:hover{
+  transform:translateY(-3px);
+  border-color:#00eaff;
+  box-shadow:0 0 25px rgba(0,234,255,.15);
+}
+
+.icon{
+  width:48px;
+  height:48px;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:15px;
+  background:rgba(0,234,255,.08);
+  border:1px solid rgba(0,234,255,.2);
+  font-size:21px;
+}
+
+.detail-label{
+  color:#777;
+  font-size:11px;
+  letter-spacing:1px;
+  margin-bottom:5px;
+}
+
+.detail-value{
+  font-size:16px;
+  font-weight:bold;
+}
+
+/* SOCIAL BUTTONS */
+
+.socials{
+  display:grid;
+  gap:15px;
+}
+
+.button{
+  min-height:62px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  border-radius:19px;
+  text-decoration:none;
+  color:white;
+  font-weight:bold;
+  font-size:16px;
+  transition:.3s;
+}
+
+.button:hover{
+  transform:translateY(-4px);
+}
+
+.whatsapp{
+  background:linear-gradient(100deg,#00a86b,#00d084);
+  box-shadow:0 10px 30px rgba(0,208,132,.18);
+}
+
+.facebook{
+  background:linear-gradient(100deg,#0866ff,#6657ff);
+  box-shadow:0 10px 30px rgba(70,90,255,.18);
+}
+
+/* GAME */
+
+.game-wrap{
+  padding:28px 18px 24px;
+}
+
+.game-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  margin-bottom:17px;
+}
+
+.game-name{
+  font-size:22px;
+  font-weight:bold;
+}
+
+.game-name span{
+  color:#ff00cc;
+}
+
+.game-stats{
+  display:flex;
+  gap:8px;
+}
+
+.stat{
+  min-width:70px;
+  padding:9px;
+  border-radius:13px;
+  text-align:center;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+}
+
+.stat small{
+  display:block;
+  color:#777;
+  font-size:9px;
+}
+
+.stat b{
+  color:#00eaff;
+  font-size:16px;
+}
+
+.game{
+  position:relative;
+  height:440px;
+  border-radius:25px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.12);
+  background:
+    radial-gradient(circle at 20% 30%,rgba(0,234,255,.13),transparent 23%),
+    radial-gradient(circle at 80% 70%,rgba(255,0,204,.13),transparent 23%),
+    #04040e;
+  touch-action:manipulation;
+}
+
+.game-star{
+  position:absolute;
+  width:3px;
+  height:3px;
+  background:white;
+  border-radius:50%;
+  opacity:.7;
+}
+
+.target{
+  position:absolute;
+  width:62px;
+  height:62px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  font-size:31px;
+  cursor:pointer;
+  user-select:none;
+  background:rgba(255,0,204,.10);
+  border:1px solid rgba(255,0,204,.6);
+  box-shadow:
+    0 0 18px rgba(255,0,204,.65),
+    inset 0 0 18px rgba(0,234,255,.25);
+  animation:targetPulse .6s infinite alternate;
+}
+
+@keyframes targetPulse{
+  to{
+    transform:scale(1.15);
+    box-shadow:
+      0 0 35px rgba(255,0,204,.8),
+      0 0 55px rgba(0,234,255,.4);
+  }
+}
+
+.game-overlay{
+  position:absolute;
+  inset:0;
+  z-index:10;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:20px;
+  background:rgba(2,2,10,.84);
+  backdrop-filter:blur(9px);
+}
+
+.game-overlay h3{
+  font-size:34px;
+  background:linear-gradient(90deg,#00eaff,#ff00cc);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.game-overlay p{
+  color:#aaa;
+  margin:13px 0 22px;
+  line-height:1.7;
+}
+
+.start{
+  border:0;
+  padding:16px 30px;
+  border-radius:18px;
+  color:white;
+  font-weight:bold;
+  font-size:16px;
+  background:linear-gradient(90deg,#7b00ff,#ff00cc);
+  box-shadow:0 0 35px rgba(255,0,204,.4);
+  cursor:pointer;
+}
+
+.hidden{
+  display:none!important;
+}
+
+.result{
+  text-align:center;
+  margin-top:15px;
+  color:#999;
+  min-height:22px;
+}
+
+/* FOOTER */
+
+.footer{
+  text-align:center;
+  padding:30px 20px;
+  color:#666;
+  font-size:12px;
+  line-height:1.9;
+}
+
+.footer b{
+  color:#00eaff;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+  .container{
+    width:calc(100% - 14px);
+    padding-top:10px;
+  }
+
+  .hero{
+    padding:42px 15px 38px;
+  }
+
+  .avatar{
+    width:135px;
+    height:135px;
+  }
+
+  .avatar-inner{
+    font-size:44px;
+  }
+
+  .game{
+    height:390px;
+  }
+
+  .game-head{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .game-stats{
+    width:100%;
+  }
+
+  .stat{
+    flex:1;
+  }
+
+  .title{
+    font-size:24px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Floating lights -->
+
+<div class="particle" style="left:8%;top:20%"></div>
+<div class="particle" style="left:20%;top:70%"></div>
+<div class="particle" style="left:35%;top:15%"></div>
+<div class="particle" style="left:55%;top:80%"></div>
+<div class="particle" style="left:75%;top:25%"></div>
+<div class="particle" style="left:90%;top:65%"></div>
+<div class="particle" style="left:65%;top:45%"></div>
+
+<div class="container">
+
+<!-- HERO -->
+
+<div class="rgb">
+<div class="card hero">
+
+  <div class="hero-tag">
+    ✦ PERSONAL SPACE ✦
+  </div>
+
+  <div class="avatar">
+    <div class="avatar-inner">
+      AM
+    </div>
+  </div>
+
+  <h1>Atif Irfan Musa</h1>
+
+  <p class="muta">
+    ✨ Muta • Student • Science
+  </p>
+
+  <p class="place">
+    📍 Bogura, Bangladesh
+  </p>
+
+  <div class="status">
+    <span class="dot"></span>
+    ONLINE • PERSONAL PROFILE
+  </div>
+
+</div>
+</div>
+
+<!-- CLOCK -->
+
+<div class="rgb">
+<div class="card clock-card">
+
+  <div class="small-title">
+    🇧🇩 BANGLADESH LIVE CLOCK
+  </div>
+
+  <div id="clock" class="clock">
+    00:00:00
+  </div>
+
+  <div id="date" class="date">
+    Loading...
+  </div>
+
+</div>
+</div>
+
+<!-- PERSONAL DETAILS -->
+
+<div class="rgb">
+<div class="card section">
+
+  <h2 class="title">
+    👤 My Personal Details
+  </h2>
+
+  <div class="details">
+
+    <div class="detail">
+      <div class="icon">👤</div>
+      <div>
+        <div class="detail-label">FULL NAME</div>
+        <div class="detail-value">Atif Irfan Musa</div>
+      </div>
+    </div>
+
+    <div class="detail">
+      <div class="icon">✨</div>
+      <div>
+        <div class="detail-label">NICKNAME</div>
+        <div class="detail-value">Muta</div>
+      </div>
+    </div>
+
+    <div class="detail">
+      <div class="icon">🎓</div>
+      <div>
+        <div class="detail-label">EDUCATION</div>
+        <div class="detail-value">Class New 10</div>
+      </div>
+    </div>
+
+    <div class="detail">
+      <div class="icon">🔬</div>
+      <div>
+        <div class="detail-label">DEPARTMENT</div>
+        <div class="detail-value">Science</div>
+      </div>
+    </div>
+
+    <div class="detail">
+      <div class="icon">📍</div>
+      <div>
+        <div class="detail-label">HOME</div>
+        <div class="detail-value">Bogura, Bangladesh</div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</div>
+
+<!-- SOCIAL -->
+
+<div class="rgb">
+<div class="card section">
+
+  <h2 class="title">
+    💌 Connect With Me
+  </h2>
+
+  <div class="socials">
+
+    <!-- WhatsApp -->
+    <a
+      class="button whatsapp"
+      href="https://wa.me/8801334501977"
+      target="_blank"
+      rel="noopener">
+      💬 WhatsApp Me
+    </a>
+
+    <!-- Facebook -->
+    <a
+      class="button facebook"
+      href="https://www.facebook.com/share/1EV99iA9f1/"
+      target="_blank"
+      rel="noopener">
+      🌐 Facebook Profile
+    </a>
+
+  </div>
+
+</div>
+</div>
+
+<!-- GAME -->
+
+<div class="rgb">
+<div class="card game-wrap">
+
+  <div class="game-head">
+
+    <div class="game-name">
+      🎮 Neon <span>Star Hunt</span>
+    </div>
+
+    <div class="game-stats">
+
+      <div class="stat">
+        <small>SCORE</small>
+        <b id="score">0</b>
+      </div>
+
+      <div class="stat">
+        <small>TIME</small>
+        <b id="timeLeft">30</b>
+      </div>
+
+      <div class="stat">
+        <small>BEST</small>
+        <b id="best">0</b>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="game" id="game">
+
+    <!-- Background stars -->
+
+    <div class="game-star" style="left:8%;top:12%"></div>
+    <div class="game-star" style="left:25%;top:22%"></div>
+    <div class="game-star" style="left:45%;top:10%"></div>
+    <div class="game-star" style="left:70%;top:25%"></div>
+    <div class="game-star" style="left:88%;top:15%"></div>
+
+    <div class="game-star" style="left:15%;top:55%"></div>
+    <div class="game-star" style="left:35%;top:70%"></div>
+    <div class="game-star" style="left:60%;top:55%"></div>
+    <div class="game-star" style="left:80%;top:75%"></div>
+
+    <!-- Start -->
+
+    <div class="game-overlay" id="overlay">
+
+      <h3>✨ STAR HUNT</h3>
+
+      <p>
+        ৩০ সেকেন্ডে যত বেশি<br>
+        ⭐ Neon Star ধরতে পারো!
+      </p>
+
+      <button
+        class="start"
+        onclick="startGame()">
+        🚀 START GAME
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="result" id="result">
+    Game শুরু করার জন্য START GAME চাপো 💖
+  </div>
+
+</div>
+</div>
+
+<!-- FOOTER -->
+
+<div class="rgb">
+<div class="card footer">
+
+  ✨ Made with Love
+
+  <br>
+
+  <b>Atif Irfan Musa</b>
+
+  <br>
+
+  Muta Personal Space
+
+  <br><br>
+
+  © 2026 • Personal Website
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+/* =========================
+   BANGLADESH CLOCK
+========================= */
+
+function updateClock(){
+
+  const now = new Date();
+
+  const time = new Intl.DateTimeFormat("en-US",{
+    timeZone:"Asia/Dhaka",
+    hour:"2-digit",
+    minute:"2-digit",
+    second:"2-digit",
+    hour12:true
+  }).format(now);
+
+  const date = new Intl.DateTimeFormat("en-US",{
+    timeZone:"Asia/Dhaka",
+    weekday:"long",
+    year:"numeric",
+    month:"long",
+    day:"numeric"
+  }).format(now);
+
+  document.getElementById("clock").textContent = time;
+  document.getElementById("date").textContent = date;
+}
+
+updateClock();
+setInterval(updateClock,1000);
+
+
+/* =========================
+   STAR HUNT GAME
+========================= */
+
+let score = 0;
+let timeLeft = 30;
+let playing = false;
+let timer = null;
+let targetTimer = null;
+
+let best =
+  Number(localStorage.getItem("mutaBestScore")) || 0;
+
+document.getElementById("best").textContent = best;
+
+
+/* CREATE STAR */
+
+function createTarget(){
+
+  if(!playing) return;
+
+  const game = document.getElementById("game");
+
+  const old = document.querySelector(".target");
+
+  if(old){
+    old.remove();
+  }
+
+  const target = document.createElement("div");
+
+  target.className = "target";
+  target.innerHTML = "⭐";
+
+  const size = 62;
+
+  const maxX = game.clientWidth - size;
+  const maxY = game.clientHeight - size;
+
+  target.style.left =
+    Math.max(5,Math.random()*maxX) + "px";
+
+  target.style.top =
+    Math.max(5,Math.random()*maxY) + "px";
+
+  target.onclick = function(){
+
+    if(!playing) return;
+
+    score++;
+
+    document.getElementById("score")
+      .textContent = score;
+
+    createTarget();
+
+    clearTimeout(targetTimer);
+
+    targetTimer = setTimeout(
+      createTarget,
+      Math.max(300,800-score*12)
+    );
+  };
+
+  game.appendChild(target);
+}
+
+
+/* START GAME */
+
+function startGame(){
+
+  if(playing) return;
+
+  score = 0;
+  timeLeft = 30;
+  playing = true;
+
+  document.getElementById("score")
+    .textContent = "0";
+
+  document.getElementById("timeLeft")
+    .textContent = "30";
+
+  document.getElementById("result")
+    .textContent =
+    "⭐ Catch the Neon Stars!";
+
+  document.getElementById("overlay")
+    .classList.add("hidden");
+
+  createTarget();
+
+  clearInterval(timer);
+
+  timer = setInterval(function(){
+
+    timeLeft--;
+
+    document.getElementById("timeLeft")
+      .textContent = timeLeft;
+
+    if(timeLeft <= 0){
+      endGame();
+    }
+
+  },1000);
+}
+
+
+/* END GAME */
+
+function endGame(){
+
+  playing = false;
+
+  clearInterval(timer);
+  clearTimeout(targetTimer);
+
+  const target = document.querySelector(".target");
+
+  if(target){
+    target.remove();
+  }
+
+  if(score > best){
+
+    best = score;
+
+    localStorage.setItem(
+      "mutaBestScore",
+      best
+    );
+
+    document.getElementById("best")
+      .textContent = best;
+  }
+
+  document.getElementById("result")
+    .textContent =
+    "🎉 Game Over! তোমার Score: " + score;
+
+  document.getElementById("overlay")
+    .classList.remove("hidden");
+
+  document.querySelector(".game-overlay h3")
+    .textContent = "🏆 GAME OVER";
+
+  document.querySelector(".game-overlay p")
+    .innerHTML =
+    "তোমার স্কোর: <b>" +
+    score +
+    "</b><br>আবার চেষ্টা করো! 🔥";
+
+  document.querySelector(".start")
+    .textContent = "🔄 PLAY AGAIN";
+}
+
+</script>
+
+</body>
+  </html>
